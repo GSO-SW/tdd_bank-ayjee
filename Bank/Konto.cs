@@ -2,7 +2,7 @@
 
 namespace Bank
 {
-    internal class Konto
+    public class Konto
     {
         private int guthaben;
 
@@ -21,7 +21,14 @@ namespace Bank
 
         public void Einzahlen(int betrag)
         {
-            guthaben += betrag;
+            if (betrag > 0)
+            {
+                guthaben += betrag;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("Betrag darf nicht negativ sein.");
+            }
         }
 
         public void Auszahlen(int betrag)
