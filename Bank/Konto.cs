@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
+using System.Security;
 
 namespace Bank
 {
@@ -14,9 +16,22 @@ namespace Bank
             }
         }
 
+        static void KontoNr(int kontoNr)
+        {
+            kontoNr = 0;
+        }
+
         public Konto(int guthaben)
         {
-            this.guthaben = guthaben;
+            if (guthaben >= 0)
+            {
+                this.guthaben = guthaben;
+
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("Konto darf nicht negativ sein");
+            }
         }
 
         public void Einzahlen(int betrag)
